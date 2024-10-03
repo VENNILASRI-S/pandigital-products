@@ -1,0 +1,11 @@
+from itertools import permutations
+number = [str(x) for x in range(1,int(input())+1)]
+p_numbers = permutations(number)
+s = set()
+for item in p_numbers:
+    x = (len(item)//2)+(len(item)%2)
+    if int(''.join(item[0:1])) * int(''.join(item[1:x])) == int(''.join(item[x:])):
+        s.add(int(''.join(item[x:])))
+    if len(item)>6 and int(''.join(item[0:2])) * int(''.join(item[2:x])) == int(''.join(item[x:])):
+        s.add(int(''.join(item[x:])))
+print(sum(s))
